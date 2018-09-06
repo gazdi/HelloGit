@@ -14,6 +14,7 @@ import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class TestHelloWorld {
 
@@ -30,11 +31,11 @@ public class TestHelloWorld {
 		
 		if (osname.startsWith("Windows")) {
 			System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
+			browser = new ChromeDriver();
 		}
 		else {
-			System.setProperty("webdriver.chrome.driver", "drv/chromedriver");
+			browser = new HtmlUnitDriver();
 		}
-		browser = new ChromeDriver();
 	}
 	
 	@After
