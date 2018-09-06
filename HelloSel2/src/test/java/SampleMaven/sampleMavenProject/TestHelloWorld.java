@@ -24,14 +24,15 @@ public class TestHelloWorld {
 	
 	@Before
 	public void init_browser() {
-		try {
+		String osname =System.getProperty("os.name");
+		
+		if (osname.startsWith("Windows")) {
 			System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
-			browser = new ChromeDriver();
 		}
-		catch (Exception e) {
+		else {
 			System.setProperty("webdriver.chrome.driver", "drv/chromedriver");
-			browser = new ChromeDriver();
 		}
+		browser = new ChromeDriver();
 	}
 	
 	@After
