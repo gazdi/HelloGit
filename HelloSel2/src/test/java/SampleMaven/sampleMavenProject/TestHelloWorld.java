@@ -24,7 +24,7 @@ public class TestHelloWorld {
 	
 	@Before
 	public void init_browser() {
-		System.setProperty("webdriver.chrome.driver", "C:/Users/cbobak/eclipse-workspace/HelloSel/drv/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
 		browser = new ChromeDriver();
 	}
 	
