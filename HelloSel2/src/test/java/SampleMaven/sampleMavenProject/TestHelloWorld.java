@@ -26,6 +26,8 @@ public class TestHelloWorld {
 	public void init_browser() {
 		String osname =System.getProperty("os.name");
 		
+		System.out.println(osname);
+		
 		if (osname.startsWith("Windows")) {
 			System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
 		}
