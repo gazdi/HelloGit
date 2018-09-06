@@ -26,11 +26,12 @@ public class TestHelloWorld {
 	public void init_browser() {
 		try {
 			System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
+			browser = new ChromeDriver();
 		}
 		catch (Exception e) {
 			System.setProperty("webdriver.chrome.driver", "drv/chromedriver");
+			browser = new ChromeDriver();
 		}
-		browser = new ChromeDriver();
 	}
 	
 	@After
