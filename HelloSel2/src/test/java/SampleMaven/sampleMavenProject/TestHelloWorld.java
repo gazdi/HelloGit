@@ -9,12 +9,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 public class TestHelloWorld {
 
@@ -34,7 +38,8 @@ public class TestHelloWorld {
 			browser = new ChromeDriver();
 		}
 		else {
-			browser = new HtmlUnitDriver();
+			Capabilities cap = DesiredCapabilities.chrome();
+			browser = new HtmlUnitDriver((BrowserVersion) cap);
 		}
 	}
 	
