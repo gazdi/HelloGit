@@ -9,16 +9,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 public class TestHelloWorld {
 
@@ -34,12 +31,15 @@ public class TestHelloWorld {
 		System.out.println(osname);
 		
 		if (osname.startsWith("Windows")) {
-			System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
-			browser = new ChromeDriver();
+			//System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
+			//browser = new ChromeDriver();
+
+			System.setProperty("phantomjs.binary.path", "drv/phantomjs.exe");
+			browser = new PhantomJSDriver();
 		}
 		else {
-			Capabilities cap = DesiredCapabilities.chrome();
-			browser = new HtmlUnitDriver((BrowserVersion) cap);
+			System.setProperty("phantomjs.binary.path", "drv/phantomjs");
+			browser = new PhantomJSDriver();
 		}
 	}
 	
@@ -80,6 +80,7 @@ public class TestHelloWorld {
 			browser.switchTo().alert().accept();
 		}
 		assertEquals("Hello WORLD!", output.getText());
+		assertEquals("Hello WORLDFAIL!", output.getText());
 	}
 	
 }
